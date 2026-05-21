@@ -1,0 +1,9 @@
+# InterLink — Upload Security
+# Block PHP execution in uploads (InfinityFree compatible)
+# NOTE: "Options -Indexes" is NOT allowed on InfinityFree/LiteSpeed.
+# Directory listing is suppressed by the index.php file in this folder.
+
+<FilesMatch "\.(php|php2|php3|php4|php5|php6|php7|pht|phtml|shtml|sh|cgi|pl|py)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>

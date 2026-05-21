@@ -1,0 +1,23 @@
+# =========================================================
+# InterLink — Root .htaccess (InfinityFree / LiteSpeed compatible)
+# =========================================================
+# NOTE: InfinityFree's LiteSpeed server does NOT allow the
+# "Options" directive in .htaccess — using it causes a 403.
+# Directory listing is prevented by placing an index.php in
+# every directory instead (the InfinityFree-recommended way).
+# =========================================================
+
+# ---- URL Rewriting ----
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Block access to sensitive directories
+    RewriteRule ^includes/.*$ - [F,L]
+    RewriteRule ^sql/.*$ - [F,L]
+
+    # Allow direct access to existing files/directories
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+</IfModule>
