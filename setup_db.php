@@ -7,12 +7,11 @@
 // NOTE: On InfinityFree update DB_HOST, DB_NAME, DB_USER, DB_PASS in includes/config.php
 //       then update the credentials below too.
 
-// ---------- Detect hosting environment ----------
-$isLocalhost = in_array($_SERVER['HTTP_HOST'] ?? '', ['localhost', '127.0.0.1']);
-$dbHost = $isLocalhost ? 'localhost' : 'sql###.infinityfree.com'; // <-- update for InfinityFree
-$dbUser = $isLocalhost ? 'root'      : 'if0_xxxxxxx';             // <-- update for InfinityFree
-$dbPass = $isLocalhost ? ''          : 'yourpassword';            // <-- update for InfinityFree
-$dbName = 'InterLink';
+// ---------- Read DB credentials from environment variables (Render) or fallback to XAMPP ----------
+$dbHost = getenv('DB_HOST') ?: 'localhost';
+$dbUser = getenv('DB_USER') ?: 'root';
+$dbPass = getenv('DB_PASS') ?: '';
+$dbName = getenv('DB_NAME') ?: 'InterLink';
 $results = [];
 $errors  = [];
 
