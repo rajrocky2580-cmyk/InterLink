@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: InterLink
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
